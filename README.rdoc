@@ -1,28 +1,20 @@
-== README
+Ruby version: 2.3.0
+Rails version: 4.2.5
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# MysteriousApp
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a test JSON API with the next features:
+* Basic auth using 'username' and 'password'.
+* Multiple users role (admin, regular and guest)
+* Articles resource ('/articles').
+* Comments resource ('/articles/:id/comments').
+* There is a relation one to many between Articles and Comments.
+* Admin users can do everything
+* Regular users can read, create and update/delete their own articles/comments.
+* Guests users can only read.
+* Unit testing with Rspec for the existing API.
+* A seed file with with test data.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Incoming updates:
+* Frontend inside the Rails App using Webpack and featuring ReactJS, Redux, ImmutableJS, ES6/7, Mocha, Chai, SASS and Foundation.
