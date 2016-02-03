@@ -86,7 +86,7 @@ describe ArticlesController do
 
     describe 'the admin user' do
       before do
-        sign_in user
+        sign_in admin_user
         delete :destroy, id: article.id
       end
 
