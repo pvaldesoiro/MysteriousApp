@@ -6,7 +6,7 @@ describe ArticlesController do
 
   describe '#index' do
     let(:article_keys) do
-      %w(id title content user_id created_at updated_at comments)
+      %w(id title content created_at updated_at user comments)
     end
 
     before do
@@ -18,6 +18,7 @@ describe ArticlesController do
     it { expect(response).to have_http_status(:ok) }
     it { expect(json_response.size).to eq(3) }
     it { expect(json_response.first.keys).to eq(article_keys) }
+    it { expect(json_response.first['user'].keys).to eq(%w(id username)) }
   end
 
   describe '#create' do

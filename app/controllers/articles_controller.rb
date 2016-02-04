@@ -1,6 +1,6 @@
 class ArticlesController < ApiController
   def index
-    render json: Article.all.to_json(include: :comments)
+    render json: Article.all.to_json(Article.json_format)
   end
 
   def create
@@ -8,7 +8,7 @@ class ArticlesController < ApiController
       article = Article.new(article_params.merge(user: current_user))
 
       if article.save
-        render json: article, status: :created
+        render json: article.to_json_format, status: :created
       else
         render json: unprocessable_entity_error('article', 'create')
       end
@@ -22,7 +22,7 @@ class ArticlesController < ApiController
 
     owner?(article) do
       if article.update(article_params)
-        render json: article, status: :ok
+        render json: article.to_json_format, status: :ok
       else
         render unprocessable_entity_error('article', 'update')
       end
@@ -34,7 +34,7 @@ class ArticlesController < ApiController
 
     owner_or_admin?(article) do
       if article.destroy
-        render json: article, status: :ok
+        render json: article.id, status: :ok
       else
         render unprocessable_entity_error('article', 'delete')
       end

@@ -1,6 +1,7 @@
 class CommentsController < ApiController
   def index
-    render json: Article.find(params[:article_id]).comments.all
+    render(json: Article.find(params[:article_id]).comments
+                                                  .to_json(Comment.json_format))
   end
 
   def create
@@ -9,7 +10,7 @@ class CommentsController < ApiController
                        .comments.new(comment_params.merge(user: current_user))
 
       if comment.save
-        render json: comment, status: :created
+        render json: comment.to_json_format, status: :created
       else
         render unprocessable_entity_error('comment', 'create')
       end
@@ -23,7 +24,7 @@ class CommentsController < ApiController
 
     owner?(comment) do
       if comment.update(comment_params)
-        render json: comment, status: :ok
+        render json: comment.to_json_format, status: :ok
       else
         render unprocessable_entity_error('comment', 'update')
       end
@@ -35,7 +36,7 @@ class CommentsController < ApiController
 
     owner_or_admin?(comment) do
       if comment.destroy
-        render json: comment, status: :ok
+        render json: comment.id, status: :ok
       else
         render unprocessable_entity_error('comment', 'destroy')
       end

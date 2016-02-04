@@ -7,7 +7,7 @@ describe CommentsController do
 
   describe '#index' do
     let(:comment_keys) do
-      %w(id content article_id user_id created_at updated_at)
+      %w(id content article_id created_at updated_at user)
     end
 
     before do
@@ -18,6 +18,7 @@ describe CommentsController do
     it { expect(response).to have_http_status(:ok) }
     it { expect(json_response.size).to eq(3) }
     it { expect(json_response.first.keys).to eq(comment_keys) }
+    it { expect(json_response.first['user'].keys).to eq(%w(id username)) }
   end
 
   describe '#create' do
