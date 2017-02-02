@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # App Setup
 gem 'rails', '4.2.5'
 gem 'unicorn'
-gem 'pg', '~> 0.15'
+gem 'mysql2'
 
 # Frontend
 gem 'sass-rails', '~> 5.0'

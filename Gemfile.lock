@@ -77,12 +77,12 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
+    mysql2 (0.4.5)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     nyan-cat-formatter (0.11)
       rspec (>= 2.99, >= 2.14.2, < 4)
     orm_adapter (0.5.0)
-    pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -184,8 +184,8 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   jbuilder (~> 2.0)
+  mysql2
   nyan-cat-formatter
-  pg (~> 0.15)
   rails (= 4.2.5)
   rspec-rails
   sass-rails (~> 5.0)
@@ -196,4 +196,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.13.0
